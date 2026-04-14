@@ -1,0 +1,1451 @@
+<!-- TODO: LINE公式アカウントURL（https://line.me/R/ti/p/@ginzarosso-fukuoka）をクライアントの実URLに差し替えること -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GINZA ROSSO 福岡店 | 陶肌トリートメント・ハーブピーリング専門サロン</title>
+<meta name="description" content="福岡・警固エリアのREVI正規取扱サロン。陶肌トリートメント・ハーブピーリングで、触れたくなる素肌へ。完全予約制・個室あり。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  color: #3a3a3a;
+  background: #fefefe;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* ===== COLOR TOKENS ===== */
+:root {
+  --white: #fefefe;
+  --cream: #faf8f5;
+  --gold: #c9a84c;
+  --gold-light: #d4ba6a;
+  --gold-pale: #f0e6c8;
+  --pink: #f5c6d0;
+  --pink-deep: #e8a0b4;
+  --pink-pale: #fdf0f3;
+  --text-dark: #2d2d2d;
+  --text-mid: #5a5a5a;
+  --text-light: #8a8a8a;
+  --bg-warm: #fdfbf7;
+}
+
+/* ===== TYPOGRAPHY ===== */
+.serif { font-family: 'Noto Serif JP', serif; }
+.eng { font-family: 'Cormorant Garamond', serif; }
+
+/* ===== TEXTURE BACKGROUNDS ===== */
+.bg-washi {
+  background-color: var(--cream);
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(201, 168, 76, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(245, 198, 208, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(201, 168, 76, 0.04) 0%, transparent 50%);
+}
+
+.bg-gold-mist {
+  background: linear-gradient(170deg, #fdfbf7 0%, #f8f2e4 40%, #fdf0f3 100%);
+}
+
+.bg-pink-soft {
+  background-color: var(--pink-pale);
+  background-image:
+    radial-gradient(ellipse at 30% 30%, rgba(245, 198, 208, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 70%, rgba(201, 168, 76, 0.05) 0%, transparent 60%);
+}
+
+/* ===== UTILITY ===== */
+.container {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.text-center { text-align: center; }
+
+.gold-line {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  margin: 20px auto;
+}
+
+/* ===== FADE-IN ANIMATION ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 640px;
+  overflow: hidden;
+}
+
+.hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(250, 248, 245, 0.05) 0%,
+    rgba(250, 248, 245, 0.0) 25%,
+    rgba(250, 248, 245, 0.35) 65%,
+    rgba(250, 248, 245, 0.92) 100%
+  );
+}
+
+.hero-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0 28px 56px;
+  z-index: 2;
+  background: linear-gradient(to bottom, rgba(250, 248, 245, 0) 0%, rgba(250, 248, 245, 0.6) 100%);
+  padding-top: 40px;
+}
+
+.hero-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+
+.hero-catch {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 2.8rem;
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+}
+
+.hero-sub {
+  font-size: 0.85rem;
+  font-weight: 300;
+  line-height: 1.9;
+  color: var(--text-mid);
+  letter-spacing: 0.04em;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.hero-scroll span {
+  display: block;
+  width: 1px;
+  height: 36px;
+  background: var(--gold-light);
+  margin: 0 auto;
+  animation: scrollDown 2s ease-in-out infinite;
+}
+
+@keyframes scrollDown {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* ===== WORRY / EMPATHY SECTION ===== */
+.worry-section {
+  padding: 72px 0 64px;
+}
+
+.worry-lead {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 2;
+  letter-spacing: 0.06em;
+  color: var(--text-dark);
+  margin-bottom: 40px;
+}
+
+.worry-list {
+  list-style: none;
+}
+
+.worry-list li {
+  position: relative;
+  padding: 14px 0 14px 20px;
+  font-size: 0.92rem;
+  color: var(--text-mid);
+  line-height: 1.7;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+}
+
+.worry-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--pink-deep);
+}
+
+.worry-answer {
+  margin-top: 48px;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  line-height: 1.9;
+}
+
+/* ===== PHOTO BREAK ===== */
+.photo-break {
+  width: 100%;
+  height: 65vh;
+  min-height: 360px;
+  overflow: hidden;
+  position: relative;
+}
+
+.photo-break img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-break-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.photo-break-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  color: #fff;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.15);
+}
+
+/* ===== CONCEPT SECTION ===== */
+.concept-section { padding: 80px 0; }
+
+.concept-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.concept-heading {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  color: var(--text-dark);
+  margin-bottom: 28px;
+}
+
+.concept-body {
+  font-size: 0.88rem;
+  line-height: 2.1;
+  color: var(--text-mid);
+  letter-spacing: 0.02em;
+}
+
+.concept-body p + p { margin-top: 20px; }
+
+.concept-em {
+  color: var(--pink-deep);
+  font-weight: 400;
+}
+
+/* ===== MENU SECTION ===== */
+.menu-section { padding: 80px 0; }
+
+.menu-card {
+  margin-bottom: 48px;
+  position: relative;
+}
+
+.menu-card-img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.menu-card-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--gold);
+  color: #fff;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  padding: 5px 14px;
+  font-weight: 400;
+}
+
+.menu-card-body { padding: 24px 4px 0; }
+
+.menu-card-name {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+}
+
+.menu-card-desc {
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.menu-card-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+
+.menu-card-price small {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  font-family: 'Noto Sans JP', sans-serif;
+  margin-left: 4px;
+}
+
+/* mini menu list */
+.menu-list {
+  margin-top: 16px;
+}
+
+.menu-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+}
+
+.menu-list-name {
+  font-size: 0.88rem;
+  color: var(--text-dark);
+  letter-spacing: 0.02em;
+}
+
+.menu-list-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: var(--gold);
+  white-space: nowrap;
+  margin-left: 12px;
+}
+
+/* ===== PROCESS SECTION ===== */
+.process-section { padding: 80px 0; }
+
+.process-step {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 36px;
+  align-items: flex-start;
+}
+
+.process-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  color: var(--gold-light);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 36px;
+}
+
+.process-content {
+  flex: 1;
+}
+
+.process-title {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+
+.process-desc {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+/* ===== VOICE / REVIEW SECTION (LINE-STYLE) ===== */
+.voice-section { padding: 80px 0; }
+
+.voice-card {
+  margin-bottom: 36px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+}
+
+.voice-card:last-of-type { border-bottom: none; }
+
+.voice-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.voice-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--pink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: #fff;
+  font-weight: 400;
+  flex-shrink: 0;
+}
+
+.voice-info { flex: 1; }
+
+.voice-name {
+  font-size: 0.82rem;
+  color: var(--text-dark);
+  font-weight: 400;
+}
+
+.voice-tag {
+  font-size: 0.7rem;
+  color: var(--text-light);
+}
+
+.voice-stars {
+  color: var(--gold);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+}
+
+/* LINE-style bubble */
+.voice-bubble {
+  background: #fff;
+  border-radius: 0 18px 18px 18px;
+  padding: 20px 22px;
+  font-size: 0.85rem;
+  line-height: 1.9;
+  color: var(--text-mid);
+  position: relative;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.voice-bubble::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -8px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 8px 10px 0;
+  border-color: transparent #fff transparent transparent;
+}
+
+.voice-highlight {
+  color: var(--pink-deep);
+  font-weight: 400;
+}
+
+/* ===== COMPARISON TABLE ===== */
+.comparison {
+  margin: 40px 0;
+  overflow-x: auto;
+}
+
+.comparison table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+}
+
+.comparison th {
+  background: var(--gold);
+  color: #fff;
+  font-weight: 400;
+  padding: 12px 10px;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+.comparison th:first-child {
+  text-align: left;
+  background: rgba(201, 168, 76, 0.85);
+}
+
+.comparison td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+  text-align: center;
+  color: var(--text-mid);
+  vertical-align: middle;
+}
+
+.comparison td:first-child {
+  text-align: left;
+  color: var(--text-dark);
+  font-weight: 400;
+}
+
+.comparison tr:nth-child(even) {
+  background: rgba(201, 168, 76, 0.03);
+}
+
+.comparison .highlight-cell { color: var(--gold); font-weight: 400; }
+.comparison .dim-cell { color: #ccc; }
+
+/* ===== SALON SECTION ===== */
+.salon-section { padding: 80px 0; }
+
+.salon-img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  margin-bottom: 32px;
+  border-radius: 2px;
+}
+
+.salon-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.15em;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.salon-name-jp {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  margin-bottom: 24px;
+  letter-spacing: 0.08em;
+}
+
+.salon-info-row {
+  display: flex;
+  gap: 8px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+  font-size: 0.85rem;
+}
+
+.salon-info-label {
+  color: var(--gold);
+  min-width: 60px;
+  flex-shrink: 0;
+  font-weight: 400;
+}
+
+.salon-info-value {
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+
+/* ===== CTA SECTION ===== */
+.cta-section {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.cta-catch {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+  letter-spacing: 0.04em;
+}
+
+.cta-sub {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  margin-bottom: 32px;
+  line-height: 1.7;
+}
+
+.cta-btn {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto 16px;
+  padding: 18px 24px;
+  border-radius: 60px;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.cta-btn-primary {
+  background: var(--gold);
+  color: #fff;
+}
+
+.cta-btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(201, 168, 76, 0.3);
+}
+
+.cta-btn-secondary {
+  background: #fff;
+  color: #06C755;
+  border: 1.5px solid #06C755;
+}
+
+.cta-btn-secondary:hover {
+  background: #06C755;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.cta-note {
+  font-size: 0.72rem;
+  color: var(--text-light);
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+.cta-micro {
+  font-size: 0.7rem;
+  color: var(--text-light);
+  margin-top: -8px;
+  margin-bottom: 16px;
+}
+
+.cta-urgency {
+  display: inline-block;
+  background: var(--pink-pale);
+  color: var(--pink-deep);
+  font-size: 0.75rem;
+  padding: 6px 18px;
+  border-radius: 40px;
+  margin-bottom: 24px;
+  letter-spacing: 0.06em;
+}
+
+/* ===== FLOATING CTA ===== */
+.floating-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
+}
+
+.floating-cta.show { transform: translateY(0); }
+
+.floating-cta .cta-btn {
+  margin: 0;
+  padding: 14px 20px;
+  font-size: 0.8rem;
+  flex: 1;
+  max-width: 180px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  padding: 40px 0 100px;
+  text-align: center;
+  border-top: 1px solid rgba(201, 168, 76, 0.1);
+}
+
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.footer-copy {
+  font-size: 0.65rem;
+  color: var(--text-light);
+  letter-spacing: 0.05em;
+}
+
+/* ===== RATING BADGE ===== */
+.rating-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(201, 168, 76, 0.08);
+  padding: 10px 20px;
+  border-radius: 60px;
+  margin: 24px 0;
+}
+
+.rating-badge-score {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  color: var(--gold);
+}
+
+.rating-badge-label {
+  font-size: 0.72rem;
+  color: var(--text-mid);
+  line-height: 1.4;
+}
+
+/* ===== FEATURES GRID ===== */
+.features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 40px 0;
+}
+
+.feature-item {
+  text-align: center;
+  padding: 24px 12px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 4px;
+}
+
+.feature-icon {
+  width: 32px;
+  height: 32px;
+  margin: 0 auto 12px;
+  border: 1px solid var(--gold-pale);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: var(--gold);
+}
+
+.feature-name {
+  font-size: 0.78rem;
+  color: var(--text-dark);
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+
+.feature-desc {
+  font-size: 0.68rem;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+/* ===== PRICE HIGHLIGHT ===== */
+.price-highlight {
+  text-align: center;
+  padding: 32px 20px;
+  background: rgba(201, 168, 76, 0.06);
+  border-radius: 4px;
+  margin: 32px 0;
+}
+
+.price-highlight-label {
+  font-size: 0.75rem;
+  color: var(--text-mid);
+  margin-bottom: 8px;
+  letter-spacing: 0.08em;
+}
+
+.price-highlight-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.price-highlight-value small {
+  font-size: 1rem;
+  margin-left: 2px;
+}
+
+.price-highlight-note {
+  font-size: 0.7rem;
+  color: var(--text-light);
+  margin-top: 8px;
+}
+
+/* ===== SECTION HEADER ===== */
+.section-header {
+  margin-bottom: 48px;
+}
+
+.section-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  color: var(--text-dark);
+}
+
+/* ===== MAP ===== */
+.map-wrapper {
+  width: 100%;
+  height: 280px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 32px;
+}
+
+.map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (min-width: 768px) {
+  .container {
+    max-width: 560px;
+    padding: 0 40px;
+  }
+
+  .hero-catch { font-size: 3.4rem; }
+  .concept-heading { font-size: 2.4rem; }
+  .section-title { font-size: 2.2rem; }
+  .cta-catch { font-size: 2rem; }
+  .menu-card-img { height: 400px; }
+  .salon-img { height: 400px; }
+  .photo-break { height: 70vh; }
+}
+
+@media (min-width: 1024px) {
+  .container { max-width: 640px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <img
+    class="hero-img"
+    src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?w=1200&q=85&auto=format"
+    alt="美しい素肌の女性"
+    loading="eager"
+  >
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-label">GINZA ROSSO Fukuoka</p>
+    <h1 class="hero-catch">
+      触れたくなる<br>
+      素肌へ。
+    </h1>
+    <p class="hero-sub">
+      福岡・警固の完全予約制プライベートサロン。<br>
+      REVI正規取扱店が届ける、本物の陶肌体験。
+    </p>
+  </div>
+  <div class="hero-scroll"><span></span></div>
+</section>
+
+<!-- ===== WORRY / EMPATHY ===== -->
+<section class="worry-section bg-washi">
+  <div class="container fade-in">
+    <p class="worry-lead serif">
+      鏡を見るたびに、<br>
+      ため息をついていませんか。
+    </p>
+    <ul class="worry-list">
+      <li>毛穴の開きが、ファンデでも隠しきれない</li>
+      <li>繰り返すニキビ跡に、もう何年も悩んでいる</li>
+      <li>年齢とともに失われるハリと透明感</li>
+      <li>結婚式やイベント前に、本気で肌を変えたい</li>
+      <li>本当に効果のあるケアに、まだ出会えていない</li>
+    </ul>
+    <p class="worry-answer">
+      その悩み、ここで終わりにしませんか。
+    </p>
+  </div>
+</section>
+
+<!-- ===== PHOTO BREAK 1: 施術シーン ===== -->
+<div class="photo-break">
+  <img
+    src="images/photo_break1_treatment.jpg"
+    alt="フェイシャルトリートメントの施術風景"
+    loading="lazy"
+  >
+  <div class="photo-break-overlay">
+    <span class="photo-break-text">Touki Treatment</span>
+  </div>
+</div>
+
+<!-- ===== CONCEPT — 感情訴求に書き換え ===== -->
+<section class="concept-section bg-gold-mist">
+  <div class="container fade-in">
+    <p class="concept-label">Why REVI</p>
+    <h2 class="concept-heading">
+      たった1回で、<br>
+      「肌が変わった」と<br>
+      気づく朝がくる。
+    </h2>
+    <div class="concept-body">
+      <p>
+        施術を受けた翌朝、鏡の前で思わず触れてしまう。ファンデーションの量が減っていく。「肌きれいになった？」と聞かれる回数が増えていく。
+      </p>
+      <p>
+        REVI陶肌トリートメントは、<span class="concept-em">300種の天然酵素と3種の植物幹細胞</span>が、肌のターンオーバーを内側から整える次世代ケア。翌日から、いつも通りのメイクで過ごせます。
+      </p>
+      <p>
+        銀座ロッソは、REVI正規取扱サロン。認定技術者が一人ひとりの肌と向き合い、あなただけの陶肌体験をお届けします。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FIRST VISIT CTA ===== -->
+<section class="bg-pink-soft" style="padding: 72px 0;">
+  <div class="container text-center fade-in">
+    <p class="section-label">First Visit</p>
+    <h2 class="section-title" style="margin-bottom: 8px;">はじめての方へ</h2>
+    <p style="font-size: 0.82rem; color: var(--text-light); margin-bottom: 24px;">
+      まずは一度、この仕上がりを体験してください。
+    </p>
+    <div class="price-highlight">
+      <p class="price-highlight-label">初回限定クーポン価格</p>
+      <p class="price-highlight-value">&yen;6,600<small>（税込）</small></p>
+      <p class="price-highlight-note">REVIハーブピーリング + 酵素洗顔 + ハイドラ毛穴洗浄</p>
+    </div>
+    <span class="cta-urgency">今月の空き枠が残りわずかです</span>
+    <a href="https://beauty.hotpepper.jp/kr/slnH000564085/" target="_blank" rel="noopener" class="cta-btn cta-btn-primary">
+      空き状況を確認する
+    </a>
+    <p class="cta-micro">60秒でかんたん予約完了</p>
+  </div>
+</section>
+
+<!-- ===== MENU ===== -->
+<section class="menu-section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-label">Menu</p>
+      <h2 class="section-title">あなたの肌悩みに、<br>最適な一手を。</h2>
+    </div>
+
+    <!-- Menu 1: Popular -->
+    <div class="menu-card fade-in">
+      <img
+        class="menu-card-img"
+        src="images/menu_facial.jpg"
+        alt="REVIハーブピーリング施術"
+        loading="lazy"
+      >
+      <div class="menu-card-badge">人気 No.1</div>
+      <div class="menu-card-body">
+        <h3 class="menu-card-name">REVIハーブピーリング</h3>
+        <p class="menu-card-desc">
+          毛穴の黒ずみ・開き・ニキビケアに。酵素洗顔とハイドラ毛穴洗浄をセットにした、初めての方にもおすすめの贅沢コースです。
+        </p>
+        <p class="menu-card-price">
+          &yen;6,600<small>（税込）〜</small>
+        </p>
+      </div>
+    </div>
+
+    <!-- Menu 2 -->
+    <div class="menu-card fade-in">
+      <img
+        class="menu-card-img"
+        src="images/menu_herb.jpg"
+        alt="REVI陶肌ピール"
+        loading="lazy"
+      >
+      <div class="menu-card-body">
+        <h3 class="menu-card-name">REVI陶肌ピール</h3>
+        <p class="menu-card-desc">
+          くすみやざらつきが気になる方に。酵素の力で古い角質を優しく除去し、透明感のある肌へ導きます。
+        </p>
+        <p class="menu-card-price">
+          &yen;7,700<small>（税込）</small>
+        </p>
+      </div>
+    </div>
+
+    <!-- Menu 3 -->
+    <div class="menu-card fade-in">
+      <img
+        class="menu-card-img"
+        src="images/menu_massage.jpg"
+        alt="WINBACK深部温熱トリートメント"
+        loading="lazy"
+      >
+      <div class="menu-card-body">
+        <h3 class="menu-card-name">WINBACK 深部温熱トリートメント</h3>
+        <p class="menu-card-desc">
+          身体の芯から温め、基礎代謝をアップ。冷え性改善や痩身にも。フェイシャルとの組み合わせで相乗効果を。
+        </p>
+        <p class="menu-card-price">
+          &yen;11,000<small>（税込）〜</small>
+        </p>
+      </div>
+    </div>
+
+    <div class="gold-line"></div>
+
+    <!-- Other menus list -->
+    <div class="menu-list fade-in">
+      <div class="menu-list-item">
+        <span class="menu-list-name">REVIハードピーリング</span>
+        <span class="menu-list-price">&yen;11,000〜</span>
+      </div>
+      <div class="menu-list-item">
+        <span class="menu-list-name">幹細胞美容・臍帯血幹細胞導入</span>
+        <span class="menu-list-price">&yen;13,200〜</span>
+      </div>
+      <div class="menu-list-item">
+        <span class="menu-list-name">ハイドラ毛穴洗浄</span>
+        <span class="menu-list-price">お問い合わせ</span>
+      </div>
+      <div class="menu-list-item">
+        <span class="menu-list-name">エクソソーム導入</span>
+        <span class="menu-list-price">お問い合わせ</span>
+      </div>
+      <div class="menu-list-item">
+        <span class="menu-list-name">ブライダルメニュー</span>
+        <span class="menu-list-price">お問い合わせ</span>
+      </div>
+      <div class="menu-list-item">
+        <span class="menu-list-name">メンズフェイシャル</span>
+        <span class="menu-list-price">&yen;7,700〜</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MINI CTA AFTER MENU ===== -->
+<section class="bg-washi" style="padding: 48px 0;">
+  <div class="container text-center fade-in">
+    <p style="font-size: 0.85rem; color: var(--text-mid); margin-bottom: 20px; line-height: 1.8;">
+      気になるメニューはありましたか？<br>
+      お肌に合わせた最適なプランをご提案します。
+    </p>
+    <a href="https://beauty.hotpepper.jp/kr/slnH000564085/" target="_blank" rel="noopener" class="cta-btn cta-btn-primary" style="max-width: 280px;">
+      空き状況を確認する
+    </a>
+    <p class="cta-micro">60秒でかんたん予約完了</p>
+  </div>
+</section>
+
+<!-- ===== PHOTO BREAK 2: 美肌クローズアップ ===== -->
+<div class="photo-break">
+  <img
+    src="images/photo_break2_product.jpg"
+    alt="美しい素肌のクローズアップ"
+    loading="lazy"
+  >
+</div>
+
+<!-- ===== PROCESS ===== -->
+<section class="process-section bg-washi">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-label">Flow</p>
+      <h2 class="section-title">施術の流れ</h2>
+    </div>
+    <div class="fade-in">
+      <div class="process-step">
+        <span class="process-num">01</span>
+        <div class="process-content">
+          <p class="process-title">カウンセリング</p>
+          <p class="process-desc">お肌の状態やお悩みを丁寧にヒアリング。あなたに最適なメニューをご提案します。</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <span class="process-num">02</span>
+        <div class="process-content">
+          <p class="process-title">クレンジング・洗顔</p>
+          <p class="process-desc">メイクや皮脂汚れを丁寧に落とし、肌を清潔な状態に整えます。</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <span class="process-num">03</span>
+        <div class="process-content">
+          <p class="process-title">ゴマージュ・陶肌トリートメント</p>
+          <p class="process-desc">天然酵素のパウダーで古い角質を優しく除去。植物幹細胞が肌の奥深くに働きかけます。</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <span class="process-num">04</span>
+        <div class="process-content">
+          <p class="process-title">クリームパック・美容ジェル</p>
+          <p class="process-desc">たっぷりの美容成分を肌に閉じ込め、うるおいと栄養を補給します。</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <span class="process-num">05</span>
+        <div class="process-content">
+          <p class="process-title">仕上げ・アフターカウンセリング</p>
+          <p class="process-desc">施術後のお肌の状態を確認。ホームケアのアドバイスもお伝えします。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 比較表をここに移動（施術の流れの後） -->
+    <div class="fade-in" style="margin-top: 48px;">
+      <p class="text-center" style="font-size: 0.78rem; color: var(--text-light); margin-bottom: 16px; letter-spacing: 0.1em;">REVI陶肌 vs 従来ハーブピーリング</p>
+      <div class="comparison">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>REVI陶肌</th>
+              <th>従来ハーブ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>痛み</td>
+              <td class="highlight-cell">ほぼなし</td>
+              <td class="dim-cell">強い</td>
+            </tr>
+            <tr>
+              <td>ダウンタイム</td>
+              <td class="highlight-cell">なし</td>
+              <td class="dim-cell">1〜3週間</td>
+            </tr>
+            <tr>
+              <td>皮剥け</td>
+              <td class="highlight-cell">ほぼなし</td>
+              <td class="dim-cell">あり</td>
+            </tr>
+            <tr>
+              <td>植物幹細胞</td>
+              <td class="highlight-cell">3種配合</td>
+              <td class="dim-cell">--</td>
+            </tr>
+            <tr>
+              <td>翌日メイク</td>
+              <td class="highlight-cell">OK</td>
+              <td class="dim-cell">NG</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VOICE / REVIEWS (LINE-STYLE) — 3件に絞る ===== -->
+<section class="voice-section">
+  <div class="container">
+    <div class="section-header fade-in text-center">
+      <p class="section-label">Voice</p>
+      <h2 class="section-title">通っている方の声</h2>
+      <div class="rating-badge">
+        <span class="rating-badge-score">4.81</span>
+        <span class="rating-badge-label">HotPepper<br>口コミ平均</span>
+      </div>
+    </div>
+
+    <!-- Review 1: ニキビ跡悩み -->
+    <div class="voice-card fade-in">
+      <div class="voice-meta">
+        <div class="voice-avatar">S</div>
+        <div class="voice-info">
+          <p class="voice-name">しおりさん</p>
+          <p class="voice-tag">30代後半 / 会社員</p>
+        </div>
+        <span class="voice-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      </div>
+      <div class="voice-bubble">
+        友人に紹介してもらいました。来月の結婚式までにニキビ跡をどうにかしたくて。カウンセリングもしっかりしてもらえて、施術中も工程ごとに説明があったので不安なく受けられました。<span class="voice-highlight">仕上がりはふわつるで大満足。</span>翌日のメイクノリが全然違ってびっくりです。
+      </div>
+    </div>
+
+    <!-- Review 2: 毛穴悩み -->
+    <div class="voice-card fade-in">
+      <div class="voice-meta">
+        <div class="voice-avatar">M</div>
+        <div class="voice-info">
+          <p class="voice-name">まいさん</p>
+          <p class="voice-tag">20代後半 / 美容師</p>
+        </div>
+        <span class="voice-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      </div>
+      <div class="voice-bubble">
+        職業柄いろいろ試してきたけど、ここのハーブピーリングは本当に違いました。<span class="voice-highlight">翌朝の肌がもう別人。</span>毛穴が目立たなくなって、ノーファンデで過ごせる日が増えました。月1で通い続けてます。
+      </div>
+    </div>
+
+    <!-- Review 3: くすみ・年齢肌悩み -->
+    <div class="voice-card fade-in">
+      <div class="voice-meta">
+        <div class="voice-avatar">Y</div>
+        <div class="voice-info">
+          <p class="voice-name">ゆきなさん</p>
+          <p class="voice-tag">40代前半 / 自営業</p>
+        </div>
+        <span class="voice-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      </div>
+      <div class="voice-bubble">
+        40代に入ってから肌のくすみが気になっていて、友人の紹介で初めて伺いました。個室でゆったり施術してもらえるのがとても良かったです。<span class="voice-highlight">1回でトーンアップを実感。</span>主人にも「最近肌きれいだね」と言われました。
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section class="bg-pink-soft" style="padding: 72px 0;">
+  <div class="container fade-in">
+    <div class="section-header text-center">
+      <p class="section-label">Why GINZA ROSSO</p>
+      <h2 class="section-title">選ばれる理由</h2>
+    </div>
+    <div class="features">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <p class="feature-name">REVI正規取扱店</p>
+        <p class="feature-desc">本物の陶肌トリートメントを認定技術者が施術</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <p class="feature-name">完全予約制・個室</p>
+        <p class="feature-desc">他のお客様と顔を合わせないプライベート空間</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <p class="feature-name">丁寧なカウンセリング</p>
+        <p class="feature-desc">肌悩みに合わせたオーダーメイドの施術プラン</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <p class="feature-name">お子様連れOK</p>
+        <p class="feature-desc">ママでも安心して通えるサロン環境</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PHOTO BREAK 3 ===== -->
+<div class="photo-break">
+  <img
+    src="images/photo_break3_salon.jpg"
+    alt="美しい肌の女性ポートレート"
+    loading="lazy"
+  >
+  <div class="photo-break-overlay">
+    <span class="photo-break-text">Your Skin, Renewed</span>
+  </div>
+</div>
+
+<!-- ===== SALON INFO ===== -->
+<section class="salon-section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-label">Salon</p>
+      <h2 class="section-title">サロン案内</h2>
+    </div>
+    <div class="fade-in">
+      <img
+        class="salon-img"
+        src="images/review_bg.jpg"
+        alt="GINZA ROSSO 福岡店 サロン空間"
+        loading="lazy"
+      >
+      <h3 class="salon-name eng">GINZA ROSSO</h3>
+      <p class="salon-name-jp">ギンザロッソ 福岡店</p>
+
+      <div class="salon-info-row">
+        <span class="salon-info-label">住所</span>
+        <span class="salon-info-value">福岡県福岡市中央区警固2-11-15<br>高橋第三警固ビル201</span>
+      </div>
+      <div class="salon-info-row">
+        <span class="salon-info-label">最寄り</span>
+        <span class="salon-info-value">地下鉄空港線 赤坂駅4番出口<br>徒歩8分（1F 餃子屋弐ノ弐警固店が目印）</span>
+      </div>
+      <div class="salon-info-row">
+        <span class="salon-info-label">電話</span>
+        <span class="salon-info-value"><a href="tel:092-724-3288" style="color: var(--gold);">092-724-3288</a></span>
+      </div>
+      <div class="salon-info-row">
+        <span class="salon-info-label">営業</span>
+        <span class="salon-info-value">11:00 - 20:00（不定休）</span>
+      </div>
+      <div class="salon-info-row">
+        <span class="salon-info-label">設備</span>
+        <span class="salon-info-value">完全予約制 / 個室あり / 駐車場あり<br>お子様連れOK / メイクルーム完備</span>
+      </div>
+      <div class="salon-info-row">
+        <span class="salon-info-label">決済</span>
+        <span class="salon-info-value">Visa / Mastercard / JCB / Amex<br>Diners / Discover / スマート決済</span>
+      </div>
+
+      <div class="map-wrapper">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d830.8!2d130.39707!3d33.58468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3541918f4c5b6b2f%3A0x0!2z56aP5bKh55yM56aP5bKh5biC5Lit5aSu5Yy66K2m5Zu677yS5LiB55uu77yR77yR4oiS77yR77yV!5e0!3m2!1sja!2sjp!4v1"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="GINZA ROSSO 福岡店 地図"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="cta-section bg-gold-mist">
+  <div class="container fade-in">
+    <p class="concept-label text-center">Reserve</p>
+    <h2 class="cta-catch">
+      あなたの肌が変わる日は、<br>
+      今日から始められる。
+    </h2>
+    <p class="cta-sub">
+      完全予約制のプライベート空間で、<br>
+      あなただけの陶肌体験を。
+    </p>
+    <span class="cta-urgency">今月の空き枠が残りわずかです</span>
+    <a href="https://beauty.hotpepper.jp/kr/slnH000564085/" target="_blank" rel="noopener" class="cta-btn cta-btn-primary">
+      今すぐ空き状況を確認する
+    </a>
+    <p class="cta-micro">60秒でかんたん予約完了</p>
+    <a href="https://line.me/R/ti/p/@ginzarosso-fukuoka" class="cta-btn cta-btn-secondary">
+      LINEで気軽に相談する
+    </a>
+    <p class="cta-note">
+      当日予約も承ります。お電話でのご予約：<a href="tel:092-724-3288" style="color: var(--gold);">092-724-3288</a>
+    </p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <p class="footer-logo eng">GINZA ROSSO</p>
+  <p class="footer-copy">REVI正規取扱サロン / 福岡・警固</p>
+</footer>
+
+<!-- ===== FLOATING CTA ===== -->
+<div class="floating-cta" id="floatingCta">
+  <a href="https://beauty.hotpepper.jp/kr/slnH000564085/" target="_blank" rel="noopener" class="cta-btn cta-btn-primary">
+    空き状況を確認
+  </a>
+  <a href="https://line.me/R/ti/p/@ginzarosso-fukuoka" class="cta-btn cta-btn-secondary">
+    LINE相談
+  </a>
+</div>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+// Fade-in on scroll
+const fadeEls = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+fadeEls.forEach(el => observer.observe(el));
+
+// Floating CTA show after scroll
+const floatingCta = document.getElementById('floatingCta');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 600) {
+    floatingCta.classList.add('show');
+  } else {
+    floatingCta.classList.remove('show');
+  }
+}, { passive: true });
+</script>
+
+</body>
+</html>
