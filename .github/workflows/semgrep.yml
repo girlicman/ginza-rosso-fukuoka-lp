@@ -1,0 +1,104 @@
+name: "Semgrep Security Scan"
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  schedule:
+    # 毎週月曜 10:00 JST (1:00 UTC) に自動実行
+    - cron: '0 1 * * 1'
+  workflow_dispatch:
+
+jobs:
+  semgrep:
+    name: Semgrep Scan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install Semgrep
+      run: pip install semgrep
+
+    - name: Run Semgrep - Secrets Detection
+      run: |
+        semgrep --config=p/secrets \
+          --json \
+          --output=semgrep_secrets.json \
+          . || true
+      env:
+        PYTHONIOENCODING: utf-8
+
+    - name: Run Semgrep - OWASP Top 10
+      run: |
+        semgrep --config=p/owasp-top-ten \
+          --json \
+          --output=semgrep_owasp.json \
+          . || true
+      env:
+        PYTHONIOENCODING: utf-8
+
+    - name: Run Semgrep - Python Security
+      run: |
+        semgrep --config=p/python \
+          --json \
+          --output=semgrep_python.json \
+          . || true
+      env:
+        PYTHONIOENCODING: utf-8
+
+    - name: Merge Semgrep Results
+      run: |
+        python3 - <<'EOF'
+        import json, os
+        from datetime import datetime
+
+        results = {"results": [], "errors": [], "stats": {}}
+        for fname in ["semgrep_secrets.json", "semgrep_owasp.json", "semgrep_python.json"]:
+            if os.path.exists(fname):
+                with open(fname) as f:
+                    data = json.load(f)
+                results["results"].extend(data.get("results", []))
+                results["errors"].extend(data.get("errors", []))
+
+        date_str = datetime.now().strftime("%Y%m%d")
+        with open(f"semgrep_report_{date_str}.json", "w") as f:
+            json.dump(results, f, indent=2)
+
+        print(f"Total findings: {len(results['results'])}")
+        EOF
+
+    - name: Upload Semgrep Reports as Artifact
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: semgrep-reports-${{ github.run_number }}
+        path: semgrep_*.json
+        retention-days: 30
+
+    - name: Generate SARIF for GitHub Security
+      run: |
+        semgrep --config=p/secrets --config=p/owasp-top-ten \
+          --sarif \
+          --output=semgrep.sarif \
+          . || true
+      env:
+        PYTHONIOENCODING: utf-8
+
+    - name: Upload SARIF to GitHub Security
+      uses: github/codeql-action/upload-sarif@v3
+      if: always()
+      with:
+        sarif_file: semgrep.sarif
+        category: semgrep
+      continue-on-error: true

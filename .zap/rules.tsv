@@ -1,0 +1,17 @@
+# ZAP Baseline Scan Rules
+# Format: Rule ID <TAB> WARN/IGNORE/FAIL
+# WARN: レポートに記録するが CI を止めない
+# IGNORE: 無視
+# FAIL: CI を止める
+
+# Information Disclosure
+10062	WARN
+# Server Leaks Version Information
+10036	WARN
+# X-Frame-Options
+10020	WARN
+# CSP Header Missing
+10038	WARN
+# Cookies without Secure/HttpOnly
+10010	WARN
+10011	WARN
