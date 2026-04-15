@@ -21,8 +21,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'javascript', 'python' ]
-        # 対象言語: JavaScript/TypeScript（LP/HPのJS） + Python（batch/スクリプト群）
+        language: [ 'javascript' ]
+        # 対象言語: JavaScript/TypeScript（LP/HPのJS）のみ
+        # ※ginza-rosso-fukuoka-lpリポジトリはHTMLのみ。Python不在のため除外。
 
     steps:
     - name: Checkout repository
